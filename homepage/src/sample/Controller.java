@@ -61,8 +61,8 @@ public class Controller  implements Initializable{
 
         opacityPane.setOnMouseClicked(event -> {
 
-
-
+        	System.out.println("Prueba Commit");
+        		
             FadeTransition fadeTransition1=new FadeTransition(Duration.seconds(0.5),opacityPane);
             fadeTransition1.setFromValue(0.15);
             fadeTransition1.setToValue(0);
