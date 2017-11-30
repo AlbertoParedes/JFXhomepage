@@ -1,14 +1,23 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
 import com.sun.prism.Image;
+
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,7 +25,10 @@ public class Controller  implements Initializable{
 
     @FXML
     private AnchorPane pane1 ,pane2,pane3,pane4 , opacityPane,drawerPane;
+    
 
+    @FXML
+    private JFXButton btnSalir;
 
     @FXML
     private ImageView drawerImage;
@@ -36,10 +48,10 @@ public class Controller  implements Initializable{
         translateTransition.play();
 
 
-        pane1.setStyle("-fx-background-image: url(\"/sample/1.jpg\")");
-        pane2.setStyle("-fx-background-image: url(\"/sample/2.jpg\")");
-        pane3.setStyle("-fx-background-image: url(\"/sample/3.jpg\")");
-        pane4.setStyle("-fx-background-image: url(\"/sample/4.jpg\")");
+        pane1.setStyle("-fx-background-image: url(\"/sample/view/1.jpg\")");
+        pane2.setStyle("-fx-background-image: url(\"/sample/view/2.jpg\")");
+        pane3.setStyle("-fx-background-image: url(\"/sample/view/3.jpg\")");
+        pane4.setStyle("-fx-background-image: url(\"/sample/view/4.jpg\")");
 
         Animation();
 
@@ -61,8 +73,6 @@ public class Controller  implements Initializable{
 
         opacityPane.setOnMouseClicked(event -> {
 
-        	System.out.println("Prueba Commit");
-        		
             FadeTransition fadeTransition1=new FadeTransition(Duration.seconds(0.5),opacityPane);
             fadeTransition1.setFromValue(0.15);
             fadeTransition1.setToValue(0);
@@ -141,4 +151,32 @@ public class Controller  implements Initializable{
 
     }
 
+	@FXML
+	void cerrarHome(ActionEvent event) {
+		Platform.exit();
+	}
+	
+	
+	@FXML
+	void imgJava(ActionEvent event) {
+        AnchorPane anchor;
+		try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("java.fxml"));
+			anchor = loader.load();
+			Stage sendStage = new Stage();
+            
+            Scene scene = new Scene(anchor);
+            sendStage.setScene(scene);
+            sendStage.show();
+            
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+
+		
+	}
 }

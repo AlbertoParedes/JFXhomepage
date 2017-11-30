@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -16,7 +17,7 @@ public class Main extends Application {
         AnchorPane pane=loader.load();
         Scene scene=new Scene(pane);
         scene.getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
-        primaryStage.setTitle("Home page");
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(scene);
         primaryStage.show();
 
